@@ -1,3 +1,14 @@
+#!/usr/bin/env python3
+
+#################################################################################
+## NOTE:
+##   The pympler python module is required to run this script.
+##   Please install it by typing the following command in the terminal
+##      pip3 install pympler
+##
+##   You may need sudo privileges depending on your installation
+#################################################################################
+
 import timeit, random
 
 class Solution:
@@ -60,7 +71,12 @@ SETUP_CODE = '''
 from __main__ import Solution
 
 # To install library: pip3 install pympler
-from pympler import asizeof # for memory utilization readings.
+try:
+    from pympler import asizeof # for memory utilization readings.
+except ModuleNotFoundError:
+    print("Please install the pympler module")
+    print("Execute: 'pip3 install pympler'")
+    exit()
 
 bits = ***
 
@@ -79,12 +95,28 @@ result = [0 for x in range(1000)]
 
 '''
 
+
+# Add an extra check to make user has installed the necessary modules
+try:
+    from pympler import asizeof # for memory utilization readings.
+
+    bitSizeArray = [4, 8, 16, 32, 64, 128, 256, 512, 1024]
+
+    for j, bitSize in enumerate(bitSizeArray):
+        time = timeit.timeit(setup=SETUP_CODE.replace("***", str(bitSize)), stmt=TEST_CODE, number=1)
+        time = time * 1000 # convert time to milli seconds for easier readings.
+        print("Time:", "%.4f" % time, "ms") # limiting to 4 decimal places for time.
+
+except ModuleNotFoundError:
+    print("Pympler module not found...")
+    print("Execute: 'pip3 install pympler' in your terminal")
+    print("You may need sudo privileges depending on your installation...\n")
+    exit()
+
+
 bitSizeArray = [4, 8, 16, 32, 64, 128, 256, 512, 1024]
 
-for j, bitSize in enumerate(bitSizeArray):
-    time = timeit.timeit(setup=SETUP_CODE.replace("***", str(bitSize)), stmt=TEST_CODE, number=1)
-    time = time * 1000 # convert time to milli seconds for easier readings.
-    print("Time:", "%.4f" % time, "ms") # limiting to 4 decimal places for time.
+
 
 
 
