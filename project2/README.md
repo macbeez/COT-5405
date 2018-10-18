@@ -3,6 +3,7 @@
 This program simulates the addition and removal of nodes from a random graph process. A node is added to the graph with a probability of *p*. The node on the other end of the edge of the new node is selected based on a linear preferential attachment rule which is:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mathbb{P}_{t&plus;1}[u]&space;=&space;\frac{{d}_{t}(u)}{2{m}_{t}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mathbb{P}_{t&plus;1}[u]&space;=&space;\frac{{d}_{t}(u)}{2{m}_{t}}" title="\mathbb{P}_{t+1}[u] = \frac{{d}_{t}(u)}{2{m}_{t}}" /></a>
+
 Where:
 - d<sub>t</sub>(u) is the degree of a given node in graph G<sub>t</sub>
 - m<sub>t</sub> is the total number of edges in graph G<sub>t</sub>
@@ -10,6 +11,7 @@ Where:
 A node is removed from a graph with a probability of *q* (where *q = 1-p*). The node selected to delete is chosen based on a probability distribution that favors small degree nodes. When a node is deleted, all edges associated with that node will be removed as well. The probability is determined based on the following formula:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mathbb{P}_{t&plus;1}[u]&space;=&space;\frac{2{m}_{t}-{d}_{t}(u)}{2{m}_{t}({n}_{t}-1)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mathbb{P}_{t&plus;1}[u]&space;=&space;\frac{2{m}_{t}-{d}_{t}(u)}{2{m}_{t}({n}_{t}-1)}" title="\mathbb{P}_{t+1}[u] = \frac{2{m}_{t}-{d}_{t}(u)}{2{m}_{t}({n}_{t}-1)}" /></a>
+
 Where:
 - d<sub>t</sub>(u) is the degree of a given node in graph G<sub>t</sub>
 - n<sub>t</sub> is the total number of nodes in graph G<sub>t</sub>
