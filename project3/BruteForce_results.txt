@@ -1,0 +1,70 @@
+n:1
+S:       Buy Yahoo
+S_opt:   Buy Yahoo
+S_prime: Buy Yahoo
+
+Is S' a subset of S_opt?: True
+
+n:2
+S:       Buy Microsoft, Buy Microsoft
+S_opt:   Buy Microsoft
+S_prime: Buy Instagram
+
+Is S' a subset of S_opt?: False
+
+n:3
+S:       Buy Microsoft, Buy Reddit, Buy Yahoo
+S_opt:   Buy Microsoft, Buy Reddit, Buy Yahoo
+S_prime: Buy Apple, Buy Amazon
+
+Is S' a subset of S_opt?: False
+
+n:4
+S:       Buy Amazon, Buy Instagram, Buy Amazon, Buy Oracle
+S_opt:   Buy Amazon, Buy Instagram, Buy Amazon, Buy Oracle
+S_prime: Buy Instagram, Buy Apple, Buy Microsoft
+
+Is S' a subset of S_opt?: False
+
+n:5
+S:       Buy eBay, Buy Oracle, Buy Oracle, Buy Oracle, Buy Apple
+S_opt:   Buy eBay, Buy Oracle, Buy Apple
+S_prime: Buy Facebook, Buy Microsoft, Buy Google
+
+Is S' a subset of S_opt?: False
+
+n:6
+S:       Buy Instagram, Buy Apple, Buy Reddit, Buy Yahoo, Buy Amazon, Buy Microsoft
+S_opt:   Buy Instagram, Buy Apple, Buy Reddit, Buy Yahoo, Buy Amazon, Buy Microsoft
+S_prime: Buy Apple, Buy Amazon, Buy eBay
+
+Is S' a subset of S_opt?: False
+
+n:7
+S:       Buy Oracle, Buy Yahoo, Buy Google, Buy eBay, Buy Reddit, Buy Yahoo, Buy eBay
+S_opt:   Buy Oracle, Buy Yahoo, Buy Google, Buy eBay, Buy Reddit, Buy Yahoo, Buy eBay
+S_prime: Buy Yahoo, Buy Amazon, Buy Google
+
+Is S' a subset of S_opt?: False
+
+n:8
+S:       Buy Facebook, Buy Amazon, Buy Microsoft, Buy Apple, Buy Yahoo, Buy eBay, Buy Google, Buy Yahoo
+S_opt:   Buy Facebook, Buy Amazon, Buy Microsoft, Buy Apple, Buy Yahoo, Buy eBay, Buy Google, Buy Yahoo
+S_prime: Buy Amazon, Buy Google, Buy eBay
+
+Is S' a subset of S_opt?: False
+
+n:9
+S:       Buy Microsoft, Buy Reddit, Buy Apple, Buy Microsoft, Buy eBay, Buy eBay, Buy Reddit, Buy Instagram, Buy Google
+S_opt:   Buy Microsoft, Buy Reddit, Buy Apple, Buy Microsoft, Buy eBay, Buy Reddit, Buy Instagram, Buy Google
+S_prime: Buy Instagram, Buy Google, Buy Apple
+
+Is S' a subset of S_opt?: False
+
+n:10
+S:       Buy Reddit, Buy Google, Buy Amazon, Buy Reddit, Buy Yahoo, Buy Google, Buy Yahoo, Buy Microsoft, Buy Google, Buy Apple
+S_opt:   Buy Reddit, Buy Google, Buy Amazon, Buy Reddit, Buy Yahoo, Buy Google, Buy Yahoo, Buy Microsoft, Buy Google, Buy Apple
+S_prime: Buy Apple, Buy Amazon, Buy eBay
+
+Is S' a subset of S_opt?: False
+
