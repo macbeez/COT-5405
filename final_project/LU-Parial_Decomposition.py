@@ -1,15 +1,33 @@
+########################################################################################################################################
+# MID-TERM TESTING - LU DECOMPOSITION AND PARTIAL PIVOT LU DECOMPOSITION
+
+# DESCRIPTION: This source code generates LU decomposition and Partial Pivot LU Decomposition on 10 randomly generated matrices of 
+# size 3 x 3. The formula used to perform the LU decomposition is A = LU, and the formula use to perform partial pivot LU
+# decomposition is PA = LU, where P is the permutation matrix, A is the randomly generated square matrix of size 3 x 3,
+# L is the Lower Triangular matrix and U is the Upper Triangular matrix. The output in both cases are text files, with A, L, U
+# and Product (L * U) for LU decomposition and P, A, L, U Product 1 (P * A) and Product 2 (L * U) for Partial Pivot LU Decomposition.
+# It is noted that Product 1 and Product 2 are same for all the 10 iterations. Benchmarks such as time taken to 
+# execute the code and maximum memory used are also outputted.
+
+########################################################################################################################################
+
 import random
 import numpy as np
 import fractions
+import time
+import sys
 
 A = []
 L = []
 U = []
 P = []
-Q = []
 A1 = []
 A2 = []
 A3 = []
+durationLU = [] # Holds the time taken for each iteration of LU decomposition
+durationPartialLU = [] # Holds the time taken for each iteration of partial LU decomposition
+memoryLU = []
+memoryPartialLU = []
 
 #Empty the file, each time you start execution
 def clear_data_file(fileName):
@@ -85,6 +103,12 @@ def rowEchelon3(X2):
     # print("\nCoeff3: ", coeff3)
     L[2,1] = -1 * coeff3
 
+def getCurrentMemUsage():
+    memory_sum = 0
+    for object in globals():
+        memory_sum += sys.getsizeof(object)
+    return memory_sum
+
 clear_data_file("LUResults.txt")
 print("\n\nBEGINNING OF LU DECOMPOSITION\n\n")
 
@@ -94,11 +118,18 @@ for n in range (0,10):
     print("A:\n", A)
     print("L:\n", L)
     print("U:\n", U)
+
+    start = time.time()
     rowEchelon1(A)
     rowEchelon2(A1)
     rowEchelon3(A2)
+    
+    stop = time.time()
+    memUsage = getCurrentMemUsage()
+    memoryLU.append(memUsage)
+    durationLU.append(stop - start)
 
-    write_matrix_to_textfile("A", A, "LUResults.txt")
+    write_matrix_to_textfile("Run " + str(n+1) + ":\nA", A, "PartialLUResults.txt")
 
     print("\n\nRun ", n+1, ". Final matrices L, U and Product\n")
     np.set_printoptions(formatter={'all':lambda L: str(fractions.Fraction(L).limit_denominator())})
@@ -123,8 +154,9 @@ clear_data_file("PartialLUResults.txt")
 for i in range (0,10):
     P =np.identity(3)
     generate()
-    # A = np.matrix([[2,1,5], [4,4,-4], [1,3,1
+    # A = np.matrix([[2,1,5], [4,4,-4], [1,3,1]])
     # A = np.matrix([ [47,60,33], [82,36,6], [15,40,26]])
+    start = time.time()
 
     mat = np.matrix(A)
     col = 0
@@ -160,6 +192,13 @@ for i in range (0,10):
     U = A3
     product1 = np.matmul(P, A)
     product2 = np.matmul(L, U)
+    
+    # Get benchmarking data
+    stop = time.time()
+    memUsage = getCurrentMemUsage()
+    memoryPartialLU.append(memUsage)
+    durationPartialLU.append(stop - start)
+
     print("\nRun ", i + 1)
     print("P:\n", P)
     print("A:\n", A)
@@ -179,4 +218,20 @@ for i in range (0,10):
     write_matrix_to_textfile("Product of PA", product1, "PartialLUResults.txt")
 
     write_matrix_to_textfile("Product of LU", product2, "PartialLUResults.txt")
+
+print("Total time taken for LU decomposition of 10 matrices is: ", "{0:.6f}".format(sum(durationLU)), "seconds")
+print("Total time taken for Partial pivot LU decomposition of 10 matrices is: ", "{0:.6f}".format(sum(durationPartialLU)), "seconds")
+print("Maximum memory used for LU decomposition of 10 matrices is: ", max(memoryLU), "bytes")
+print("Maximum memory used for Partial pivot LU decomposition of 10 matrices is: ", max(memoryPartialLU), "bytes")
+
+
+
+
+
+
+
+
+
+
+
 
