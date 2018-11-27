@@ -221,8 +221,8 @@ for i in range (0,10):
 
 print("Total time taken for LU decomposition of 10 matrices is: ", "{0:.6f}".format(sum(durationLU)), "seconds")
 print("Total time taken for Partial pivot LU decomposition of 10 matrices is: ", "{0:.6f}".format(sum(durationPartialLU)), "seconds")
-print("Maximum memory used for LU decomposition of 10 matrices is: ", max(memoryLU), "bytes")
-print("Maximum memory used for Partial pivot LU decomposition of 10 matrices is: ", max(memoryPartialLU), "bytes")
+print("Maximum memory used for LU decomposition of 10 matrices is: ", sum(memoryLU), "bytes")
+print("Maximum memory used for Partial pivot LU decomposition of 10 matrices is: ", sum(memoryPartialLU), "bytes")
 
 
 

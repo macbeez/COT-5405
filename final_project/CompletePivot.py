@@ -200,6 +200,6 @@ for n in range (0,10):
     write_matrix_to_textfile("Product of LU", product2, "CompleteLUResults.txt")
 
 print("Total time taken for complete pivot LU decomposition of 10 matrices is: ", "{0:.6f}".format(sum(duration)), "seconds")
-print("Maximum memory used for complete pivot LU decomposition of 10 matrices is: ", max(memory), "bytes")
+print("Maximum memory used for complete pivot LU decomposition of 10 matrices is: ", sum(memory), "bytes")
 
 
